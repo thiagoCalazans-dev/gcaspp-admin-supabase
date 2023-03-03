@@ -11,13 +11,6 @@ export function FormLogin() {
   const supabase = createClient();
   const router = useRouter();
 
-  // async function createNewUser() {
-  //   const { data, error } = await supabase.auth.signUp({
-  //     email: "administrativo@gcaspp.com.br",
-  //     password: "@Gcaspp123",
-  //   });
-  // }
-
   async function handleSubmitLogin(e: any) {
     e.preventDefault();
     await supabase.auth.signInWithPassword({
