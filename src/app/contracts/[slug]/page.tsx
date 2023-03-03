@@ -16,13 +16,11 @@ export default async function Contract({
 }) {
   const { slug } = params;
   const supabase = createClient();
-  const { data, error } = await supabase
+  const { data: contract, error }: any = await supabase
     .from("contratcs")
-    .select("*, modalities (name), invoices (*), renewals(*)");
-
-  const [contract]: any = data?.filter(
-    (contract) => contract.id === Number(slug)
-  );
+    .select("*, modalities (name), invoices (*), renewals(*)")
+    .match({ id: slug })
+    .single();
 
   console.log(contract);
 
@@ -33,7 +31,7 @@ export default async function Contract({
         <ul className="">
           <li className="flex gap-2 items-center">
             <Label>Número:</Label>
-            <span className="text-zinc-300">{contract.number}</span>
+            <span className="text-brand-500">{contract.number}</span>
           </li>
           <li className="flex gap-2 items-center">
             <Label>Modalidate:</Label>
@@ -48,9 +46,10 @@ export default async function Contract({
             <span className="text-zinc-300">{contract.due_date}</span>
           </li>
         </ul>
-        <div className="flex w-full justify-between items-center my-2">
-          <H2 className="uppercase ">Aditivos</H2>
-          <Button variant={"outline"} size="sm">
+        <Separator className="my-2" />
+        <div className="flex w-full justify-between items-end mb-2">
+          <H2 className="uppercase">Aditivos</H2>
+          <Button variant="outline" size="sm">
             Novo
           </Button>
         </div>
@@ -83,25 +82,52 @@ export default async function Contract({
             </tbody>
           </table>
         </div>
-        <ScrollArea className="h-72 w-48 rounded-md border border-slate-100 dark:border-slate-700">
-          <div className="p-4">
-            <H2 className="uppercase">Faturas</H2>
-            {contract.invoices.map((data: any) => (
-              <>
-                <div className="text-sm" key={data.id}>
-                  <span>{data.number} </span>
-                  <span>{data.contract_id} </span>
-                  <span>{data.taxes} </span>
-                  <span>{data.reference_date} </span>
-                  <span>{data.payment_date} </span>
-                  <span>{data.next_invoice} </span>
-                  <span>{data.description} </span>
-                </div>
-                <Separator className="my-2" />
-              </>
-            ))}
+        <div className="mt-4">
+          <div className="flex w-full justify-between items-end my-2">
+            <H2 className="uppercase">faturas</H2>
+            <Button variant="outline" size="sm">
+              Novo
+            </Button>
           </div>
-        </ScrollArea>
+          <div className="flex min-w-full border border-zinc-600 rounded-md overflow-hidden overflow-x-auto">
+            <table className="min-w-full leading-normal border-collapse">
+              <thead>
+                <tr>
+                  <th className="px-2   bg-zinc-800 text-left font-semibold  uppercase tracking-wider">
+                    Numero
+                  </th>
+                  <th className="px-2   bg-zinc-800 text-left font-semibold  uppercase tracking-wider">
+                    competência
+                  </th>
+                  <th className="px-2   bg-zinc-800 text-left font-semibold  uppercase tracking-wider">
+                    Data da fatura
+                  </th>
+                  <th className="px-2   bg-zinc-800 text-left font-semibold  uppercase tracking-wider">
+                    Nota fiscal
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {contract.invoices.map((data: any) => (
+                  <tr key={data.id} className="border-t border-zinc-600">
+                    <td className="px-2   bg-zinc-700">{data.number}</td>
+                    <td className="px-2  bg-zinc-700">{data.reference_date}</td>
+                    <td className="px-2  bg-zinc-700">{data.invoice_date}</td>
+                    <td className="px-2  bg-zinc-700 text-center">
+                      <a
+                        className="w-full  hover:text-brand-500 underline underline-offset-2"
+                        href={data.url}
+                        target="_blank"
+                      >
+                        Link
+                      </a>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
       </Box>
     </main>
   );
