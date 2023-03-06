@@ -2,7 +2,7 @@
 
 import { createContext, useContext, useState } from "react";
 import type { SupabaseClient } from "@supabase/auth-helpers-nextjs";
-import { createClient } from "@/lib/supabase-browser";
+import { createClient } from "@/utils/lib/supabase-browser";
 
 type SupabaseContext = {
   supabase: SupabaseClient;

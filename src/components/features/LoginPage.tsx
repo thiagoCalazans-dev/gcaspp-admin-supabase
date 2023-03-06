@@ -1,9 +1,9 @@
-import { createClient } from "@/lib/supabase-server";
+import { createClient } from "@/utils/lib/supabase-server";
 import { H1 } from "../typography/H1";
 import { Box } from "../ui/Box";
 import { FormLogin } from "./forms/FormLogin";
 
-export async function Login() {
+export function Login() {
   const supabase = createClient();
 
   return (

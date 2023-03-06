@@ -1,6 +1,6 @@
 import "./globals.css";
 import "server-only";
-import { createClient } from "@/lib/supabase-server";
+import { createClient } from "@/utils/lib/supabase-server";
 import SupabaseProvider from "../components/features/supabase-provider";
 import SupabaseListener from "../components/features/supabase-listener";
 import { Navbar } from "../components/features/Navbar";
@@ -26,7 +26,7 @@ export default async function RootLayout({
             <SupabaseListener serverAccessToken={session?.access_token} />
             <div className="min-h-screen flex flex-col">
               <Navbar />
-              <div className="mx-auto max-w-7xl px-4 flex-1 w-full flex flex-col justify-center items-center">
+              <div className="mx-auto max-w-7xl px-4 flex-1 w-full flex flex-col">
                 {children}
               </div>
             </div>

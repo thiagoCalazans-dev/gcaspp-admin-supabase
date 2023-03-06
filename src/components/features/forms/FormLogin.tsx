@@ -1,6 +1,6 @@
 "use client";
 
-import { createClient } from "@/lib/supabase-browser";
+import { createClient } from "@/utils/lib/supabase-browser";
 import { useRouter } from "next/navigation";
 import { H1 } from "../../typography/H1";
 import { Label } from "../../typography/Label";

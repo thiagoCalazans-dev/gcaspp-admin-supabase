@@ -1,5 +1,5 @@
 "use client";
-import { createClient } from "@/lib/supabase-browser";
+import { createClient } from "@/utils/lib/supabase-browser";
 import Link from "next/link";
 import { SignOut } from "phosphor-react";
 import { H1 } from "../typography/H1";

@@ -1,6 +1,6 @@
 "use client";
 
-import { cn } from "@/lib/twMerge";
+import { cn } from "@/utils/lib/twMerge";
 
 export function Box({
   className,

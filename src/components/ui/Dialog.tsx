@@ -3,7 +3,7 @@
 import * as React from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { X } from "phosphor-react";
-import { cn } from "@/lib/twMerge";
+import { cn } from "@/utils/lib/twMerge";
 
 const Dialog = DialogPrimitive.Root;
 

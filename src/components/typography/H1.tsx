@@ -1,4 +1,4 @@
-import { cn } from "@/lib/twMerge";
+import { cn } from "@/utils/lib/twMerge";
 
 export function H1({
   className,

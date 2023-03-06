@@ -1,4 +1,4 @@
-import { createClient } from "@/lib/supabase-server";
+import { createClient } from "@/utils/lib/supabase-server";
 import { create } from "zustand";
 
 const supabase = createClient();
