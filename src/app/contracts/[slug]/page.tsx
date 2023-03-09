@@ -6,8 +6,10 @@ import { Label } from "@/components/typography/Label";
 import { Box } from "@/components/ui/Box";
 import { Button } from "@/components/ui/Button";
 import { Separator } from "@/components/ui/Separator";
+import { Spinner } from "@/components/ui/Spinner";
 import { formatDateStringToBrDate } from "@/utils/formatters/dates";
 import { createClient } from "@/utils/lib/supabase-server";
+import { Suspense } from "react";
 
 export default async function Contract({
   params,
@@ -61,7 +63,9 @@ export default async function Contract({
           </Button>
         </div>
         <div className="flex min-w-full border border-zinc-600 rounded-md overflow-hidden overflow-x-auto">
-          <RenewalsTable renewals={contract.renewals} />
+          <Suspense fallback={<Spinner />}>
+            <RenewalsTable contractId={slug} />
+          </Suspense>
         </div>
         <div className="mt-4">
           <div className="flex w-full justify-between items-end my-2">
@@ -71,7 +75,9 @@ export default async function Contract({
             </Button>
           </div>
           <div className="flex min-w-full border border-zinc-600 rounded-md overflow-hidden overflow-x-auto">
-            <InvoicesTable contractId={slug} />
+            <Suspense fallback={<Spinner />}>
+              <InvoicesTable contractId={slug} />
+            </Suspense>
           </div>
         </div>
       </Box>

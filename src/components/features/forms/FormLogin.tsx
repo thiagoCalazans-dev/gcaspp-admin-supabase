@@ -2,8 +2,8 @@
 
 import { createClient } from "@/utils/lib/supabase-browser";
 import { useRouter } from "next/navigation";
-import { H1 } from "../../typography/H1";
-import { Label } from "../../typography/Label";
+
+import { Label } from "@/components/typography/Label";
 import { Button } from "../../ui/Button";
 import { Input } from "../../ui/Input";
 
