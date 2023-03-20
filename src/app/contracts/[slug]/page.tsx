@@ -1,3 +1,4 @@
+import { RenewalsDialogForm } from "@/components/features/dialogs/RewewalsDialogForm";
 import { InvoicesTable } from "@/components/features/tables/InvoicesTable";
 import { RenewalsTable } from "@/components/features/tables/RenewalsTable";
 import { H1 } from "@/components/typography/H1";
@@ -58,9 +59,7 @@ export default async function Contract({
 
         <div className="flex w-full justify-between items-end mb-2">
           <H2 className="uppercase">Aditivos</H2>
-          <Button variant="outline" size="sm">
-            Novo
-          </Button>
+          <RenewalsDialogForm />
         </div>
         <div className="flex min-w-full border border-zinc-600 rounded-md overflow-hidden overflow-x-auto">
           <Suspense fallback={<Spinner />}>

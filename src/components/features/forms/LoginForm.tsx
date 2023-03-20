@@ -7,7 +7,7 @@ import { Label } from "@/components/typography/Label";
 import { Button } from "../../ui/Button";
 import { Input } from "../../ui/Input";
 
-export function FormLogin() {
+export function LoginForm() {
   const supabase = createClient();
   const router = useRouter();
 
